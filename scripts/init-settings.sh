@@ -19,6 +19,12 @@ sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" 
 #修改默认WIFI名
 sed -i "s/\.ssid=.*/\.ssid=Openwrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
+WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
+
+#修改WIFI加密
+sed -i "s/encryption=.*/encryption='psk2+ccmp'/g" $WIFI_FILE
+#修改WIFI密码
+sed -i "/set wireless.default_\${dev}.encryption='psk2+ccmp'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='password'" $WIFI_FILE
 
 # 给config下的文件增加权限
 chmod 644 files/etc/config/*
