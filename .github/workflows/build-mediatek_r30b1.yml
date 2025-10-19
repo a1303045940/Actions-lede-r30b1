@@ -18,7 +18,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   schedule:
-   - cron: '0 18 * * *'
+   - cron: '0 18 * * 4'
    # 分,时,日,月,周。示例：每周四 20:00 (UTC) 执行一次
 
 env:
