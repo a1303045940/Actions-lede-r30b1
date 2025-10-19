@@ -243,7 +243,7 @@ jobs:
       if: ${{ steps.tag.outputs.status == 'success' && !cancelled() }}
       env:
         # 推荐使用 repo-permission 的 token；如果你使用自定义 GH_TOKEN，请确保已在仓库 secrets 中设置
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
