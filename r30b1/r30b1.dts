@@ -82,7 +82,7 @@ gpio-leds {
         gpios = <&pio 11 GPIO_ACTIVE_LOW>;
     };
 
-    red_led {  /* 修正节点名称 */
+    red_led: power_red {  /* 修正节点名称 */
         label = "red:power";  /* 修正标签含义 */
         gpios = <&pio 8 GPIO_ACTIVE_LOW>;
         default-state = "on";
