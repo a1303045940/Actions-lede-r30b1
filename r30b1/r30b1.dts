@@ -49,7 +49,7 @@
 gpio-leds {
     compatible = "gpio-leds";
 
-    green_led: power_red {
+    green_led: power_green {
         label = "green:power";  /* 修正为红色电源 */
         gpios = <&pio 12 GPIO_ACTIVE_LOW>;
         default-state = "on";
