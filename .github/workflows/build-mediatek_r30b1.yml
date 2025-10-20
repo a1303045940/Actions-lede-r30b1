@@ -108,10 +108,12 @@ jobs:
         if [ -f "$GITHUB_WORKSPACE/$ADDMOUNT_SH" ]; then
           chmod +x "$GITHUB_WORKSPACE/$ADDMOUNT_SH" && "$GITHUB_WORKSPACE/$ADDMOUNT_SH"
         fi
+        cp $GITHUB_WORKSPACE/r30b1/* target/linux/mediatek/dts
         cp "$GITHUB_WORKSPACE/r30b1/r30b1.dts" target/linux/mediatek/dts/mt7981b-cmcc-rax3000m.dts
         chmod +x target/linux/mediatek/dts/mt7981b-cmcc-rax3000m.dts
         cp "$GITHUB_WORKSPACE/r30b1/r30b12.dts" target/linux/mediatek/mt7981b-cmcc-rax3000m-nand.dts
         chmod +x target/linux/mediatek/dts/mt7981b-cmcc-rax3000m-nand.dts
+        
         echo "mt7981b-cmcc-rax3000m-nand.dts"
 
     - name: 空间使用情况2
