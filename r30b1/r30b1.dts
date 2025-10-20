@@ -83,7 +83,7 @@ gpio-leds {
     };
 
     red_led {  /* 修正节点名称 */
-        label = "red:system";  /* 修正标签含义 */
+        label = "red_led";  /* 修正标签含义 */
         gpios = <&pio 8 GPIO_ACTIVE_LOW>;
         default-state = "on";
         linux,default-trigger = "default-on";
