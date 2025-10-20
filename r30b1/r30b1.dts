@@ -46,7 +46,7 @@
 		};
 	};
 
-leds {
+gpio-leds {
 		compatible = "gpio-leds";
 
 		power_led: power_red {
