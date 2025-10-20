@@ -50,7 +50,7 @@ gpio-leds {
     compatible = "gpio-leds";
 
     green_led: power_red {
-        label = "green_led";  /* 修正为红色电源 */
+        label = "green:power";  /* 修正为红色电源 */
         gpios = <&pio 12 GPIO_ACTIVE_LOW>;
         default-state = "on";
         linux,default-trigger = "default-on";
@@ -83,7 +83,7 @@ gpio-leds {
     };
 
     red_led {  /* 修正节点名称 */
-        label = "red_led";  /* 修正标签含义 */
+        label = "red:power";  /* 修正标签含义 */
         gpios = <&pio 8 GPIO_ACTIVE_LOW>;
         default-state = "on";
         linux,default-trigger = "default-on";
