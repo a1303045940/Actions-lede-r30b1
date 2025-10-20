@@ -49,7 +49,7 @@
 gpio-leds {
 		compatible = "gpio-leds";
 
-		power_led: power_red {
+		green_led: power_red {
 			label = "red_power";
 			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
 			default-state = "on";
@@ -81,7 +81,7 @@ gpio-leds {
 			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
 		};
 
-		all_ctrl {
+		red_led {
 			label = "ctrl_all";
 			gpios = <&pio 8 GPIO_ACTIVE_LOW>;
 			default-state = "on";
