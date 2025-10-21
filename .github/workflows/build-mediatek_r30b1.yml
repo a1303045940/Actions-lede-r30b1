@@ -116,6 +116,10 @@ jobs:
         cp "$GITHUB_WORKSPACE/r30b1/mt7981b-cmcc-rax3000m-nand.dts" target/linux/mediatek/mt7981b-cmcc-rax3000m-nand.dts
         #chmod +x target/linux/mediatek/dts/mt7981b-cmcc-rax3000m-nand.dts
         
+        cp "$GITHUB_WORKSPACE/r30b1/mt7981b-clt-r30b1-112m.dts" target/linux/mediatek/mt7981b-clt-r30b1-112m.dts
+        cp "$GITHUB_WORKSPACE/r30b1/mt7981b-clt-r30b1.dts" target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
+
+        
         echo "rax3000m.dts和r30b1文件替换成功"
 
     - name: 空间使用情况2
