@@ -10,8 +10,8 @@
 #include "mt7981.dtsi"
 
 / {
-	model = "CLT R30B1";
-	compatible = "clt,r30b1", "mediatek,mt7981";
+	model = "CMCC RAX3000M";
+	compatible = "cmcc,rax3000m", "mediatek,mt7981";
 
 	aliases {
 		led-boot = &red_led;
@@ -46,52 +46,24 @@
 		};
 	};
 
-gpio-leds {
-    compatible = "gpio-leds";
+	gpio-leds {
+		compatible = "gpio-leds";
 
-    green_led: power_green {
-        label = "green:power";  /* 修正为红色电源 */
-        gpios = <&pio 12 GPIO_ACTIVE_LOW>;
-        default-state = "on";
-        linux,default-trigger = "default-on";
-    };
+		green_led: led-0 {
+			label = "green:status";
+			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+		};
 
-    /* 其他节点保持不变 */
-    system_led: wan_green {
-        label = "green:wan";
-        gpios = <&pio 6 GPIO_ACTIVE_LOW>;
-    };
+		led-1 {
+			label = "blue:status";
+			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
+		};
 
-    wan_red {
-        label = "red:wan";
-        gpios = <&pio 5 GPIO_ACTIVE_LOW>;
-    };
-
-    mesh_blue {
-        label = "blue:mesh";
-        gpios = <&pio 13 GPIO_ACTIVE_LOW>;
-    };
-
-    wifi_green {
-        label = "green:wifi";
-        gpios = <&pio 34 GPIO_ACTIVE_LOW>;
-    };
-
-    internet_blue {
-        label = "blue:internet";
-        gpios = <&pio 11 GPIO_ACTIVE_LOW>;
-    };
-
-    red_led: power_red {  /* 修正节点名称 */
-        label = "red:power";  /* 修正标签含义 */
-        gpios = <&pio 8 GPIO_ACTIVE_LOW>;
-        default-state = "on";
-        linux,default-trigger = "default-on";
-    };
-};
-
-
-
+		red_led: led-2 {
+			label = "red:status";
+			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
+		};
+	};
 };
 
 &eth {
@@ -136,7 +108,7 @@ gpio-leds {
 
 		port@0 {
 			reg = <0>;
-			label = "lan1";
+			label = "lan3";
 		};
 
 		port@1 {
@@ -146,7 +118,7 @@ gpio-leds {
 
 		port@2 {
 			reg = <2>;
-			label = "lan3";
+			label = "lan1";
 		};
 
 		port@6 {
