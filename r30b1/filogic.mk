@@ -334,7 +334,7 @@ define Device/cmcc_rax3000m-nand
   DEVICE_MODEL := R30B1
   DEVICE_DTS := mt7981b-cmcc-rax3000m-nand
   DEVICE_DTS_DIR := ../dts
-  DEVICE_PACKAGES := kmod-mt7981-firmware mt7981-wo-firmware kmod-usb3
+  DEVICE_PACKAGES := kmod-mt7981-firmware mt7981-wo-firmware
   UBINIZE_OPTS := -E 5
   BLOCKSIZE := 128k
   PAGESIZE := 2048
