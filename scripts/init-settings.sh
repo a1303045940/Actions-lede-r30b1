@@ -26,6 +26,11 @@ WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
 #修改WIFI密码
 #sed -i "/set wireless.default_\${dev}.encryption='psk2+ccmp'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='password'" $WIFI_FILE
 
+#添加第三方软件源
+sed -i 's/option check_signature 1/option check_signature 0/g' ./package/system/opkg/files/opkg-smime.conf
+echo src/gz openwrt_kiddin9 https://dl.openwrt.ai/latest/packages/aarch64_cortex-a53/kiddin9 >> ./package/system/opkg/files/customfeeds.conf
+
+
 # 给config下的文件增加权限
 chmod 644 files/etc/config/*
 
