@@ -51,7 +51,7 @@
 
 		green_led: led-0 {
 			label = "green:status";
-			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 34 GPIO_ACTIVE_LOW>;
 		};
 
 		led-1 {
