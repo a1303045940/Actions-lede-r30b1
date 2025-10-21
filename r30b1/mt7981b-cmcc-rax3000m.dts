@@ -56,12 +56,12 @@
 
 		led-1 {
 			label = "blue:status";
-			gpios = <&pio 13 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
 		};
 
 		red_led: led-2 {
 			label = "red:status";
-			gpios = <&pio 8 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
 			default-state = "on";
 			linux,default-trigger = "default-on";
 		};
