@@ -49,7 +49,7 @@ git clone -b master --depth 1 https://github.com/vernesong/OpenClash.git
 #UPDATE_PACKAGE "luci-app-npc" "kiddin9/kwrt-packages" "main" "pkg"
 git clone -b main --depth 1 https://github.com/a1303045940/luci-app-npc.git
 #UPDATE_PACKAGE "luci-app-frpc" "kiddin9/kwrt-packages" "main" "pkg"
-git clone -b main --depth 1 https://github.com/kiddin9/kwrt-packages/luci-app-frpc.git
+#git clone -b main --depth 1 https://github.com/kiddin9/kwrt-packages/luci-app-frpc.git
 
 
 popd
