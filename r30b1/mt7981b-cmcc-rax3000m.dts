@@ -15,8 +15,8 @@
 
 	aliases {
 		led-boot = &green_led;
-		led-failsafe = &blue_led;
-		led-running = &red_led;
+		led-failsafe = &red_led;
+		led-running = &green_led;
 		led-upgrade = &green_led;
 		serial0 = &uart0;
 	};
@@ -62,8 +62,7 @@
 		red_led: led-2 {
 			label = "red:status";
 			gpios = <&pio 12 GPIO_ACTIVE_LOW>;
-			#default-state = "on";
-			#linux,default-trigger = "default-on";
+
 		};
 	};
 };
