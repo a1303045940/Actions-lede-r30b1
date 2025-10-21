@@ -51,7 +51,7 @@
 
 		green_led: led-0 {
 			label = "green:status";
-			gpios = <&pio 9 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 34 GPIO_ACTIVE_LOW>;
 		};
 
 		led-1 {
@@ -61,7 +61,9 @@
 
 		red_led: led-2 {
 			label = "red:status";
-			gpios = <&pio 35 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 8 GPIO_ACTIVE_LOW>;
+			default-state = "on";
+			linux,default-trigger = "default-on";
 		};
 	};
 };
