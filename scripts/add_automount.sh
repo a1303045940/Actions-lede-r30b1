@@ -10,6 +10,6 @@ if [ ! -f "$FILE" ]; then
 fi
 
 # 执行替换操作， kmod-usb3 后添加 automount
-sed -i 's/kmod-usb3/& automount/g' "$FILE"
+#sed -i 's/kmod-usb3/& automount/g' "$FILE"
 
 echo "已成功在 $FILE 中的 kmod-usb3 后添加 automount"
