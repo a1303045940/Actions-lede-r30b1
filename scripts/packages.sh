@@ -19,6 +19,18 @@ rm -rf ./feeds/luci/applications/luci-app-passwall
 rm -rf ./feeds/luci/applications/luci-app-passwall2
 rm -rf ./feeds/luci/applications/luci-app-openclash
 
+# Git稀疏克隆，只克隆指定目录到本地
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../package
+  cd .. && rm -rf $repodir
+}
+
+
+
 
 #克隆插件
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/pwpage
@@ -47,6 +59,12 @@ git clone -b master --depth 1 https://github.com/vernesong/OpenClash.git
 # git clone -b main --depth 1 https://github.com/FUjr/modem_feeds.git
 
 #UPDATE_PACKAGE "luci-app-npc" "kiddin9/kwrt-packages" "main" "pkg"
+
+# iStore
+git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
+git_sparse_clone main https://github.com/linkease/istore luci
+
+
 git clone -b main --depth 1 https://github.com/a1303045940/luci-app-npc.git
 #UPDATE_PACKAGE "luci-app-frpc" "kiddin9/kwrt-packages" "main" "pkg"
 #git clone -b main --depth 1 https://github.com/kiddin9/kwrt-packages/luci-app-frpc.git
