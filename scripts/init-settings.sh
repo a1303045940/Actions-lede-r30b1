@@ -8,13 +8,12 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/luci2/bin/config_generat
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7:::/g' package/base-files/files/etc/shadow
 
 
-WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
 #修改WIFI名称
-sed -i "s/ImmortalWrt/$WRT_SSID/g" $WIFI_FILE
+
 #修改WIFI加密
-sed -i "s/encryption=.*/encryption='psk2+ccmp'/g" $WIFI_FILE
+
 #修改WIFI密码
-sed -i "/set wireless.default_\${dev}.encryption='psk2+ccmp'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='$WRT_WORD'" $WIFI_FILE
+
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
