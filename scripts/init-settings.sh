@@ -9,7 +9,8 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 
 
 #修改WIFI名称
-
+#修改默认WIFI名
+sed -i "s/\.ssid=.*/\.ssid=Openwrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 #修改WIFI加密
 
 #修改WIFI密码
@@ -28,15 +29,8 @@ sed -i "s/hostname='.*'/hostname='Openwrt'/g" ./package/base-files/files/bin/con
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/config_generate
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
 
-#修改默认WIFI名
-sed -i "s/\.ssid=.*/\.ssid=Openwrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
-WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
 
-#修改WIFI加密
-#sed -i "s/encryption=.*/encryption='psk2+ccmp'/g" $WIFI_FILE
-#修改WIFI密码
-#sed -i "/set wireless.default_\${dev}.encryption='psk2+ccmp'/a \\\t\t\t\t\t\set wireless.default_\${dev}.key='password'" $WIFI_FILE
 
 #添加第三方软件源
 sed -i "s/option check_signature/# option check_signature/g" package/system/opkg/Makefile
