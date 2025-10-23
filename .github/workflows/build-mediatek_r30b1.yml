@@ -120,6 +120,7 @@ jobs:
         chmod +x target/linux/mediatek/dts/mt7981b-clt-r30b1-112m.dts
         cp "$GITHUB_WORKSPACE/r30b1/mt7981b-clt-r30b1.dts" target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
         chmod +x target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
+        cp "$GITHUB_WORKSPACE/r30b1/02_network" target/linux/mediatek/filogic/base-files/etc/board.d/02_network
         
         echo "rax3000m.dts和r30b1文件替换成功"
 
