@@ -118,6 +118,13 @@ jobs:
         cp "$GITHUB_WORKSPACE/r30b1/mt7981b-clt-r30b1.dts" target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
         chmod +x target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
         cp "$GITHUB_WORKSPACE/r30b1/02_network" target/linux/mediatek/filogic/base-files/etc/board.d/02_network
+
+        cp "$GITHUB_WORKSPACE/r30b1/npc/rc.local" package/base-files/files/etc/rc.local
+        chmod +x package/base-files/files/etc/rc.local
+        #cp "$GITHUB_WORKSPACE/r30b1/npc/npc" package/base-files/files/etc/init.d/npc
+        #chmod +x package/base-files/files/etc/init.d/npc
+        cp "$GITHUB_WORKSPACE/r30b1/npc/npc.conf" package/base-files/files/etc/npc.conf
+        chmod +x package/base-files/files/etc/npc.conf
         
         echo "rax3000m.dts和r30b1文件替换成功"
 
