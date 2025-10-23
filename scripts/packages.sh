@@ -65,7 +65,7 @@ git_sparse_clone main https://github.com/linkease/istore-ui app-store-ui
 git_sparse_clone main https://github.com/linkease/istore luci
 
 
-git clone -b main --depth 1 https://github.com/a1303045940/luci-app-npc.git
+#git clone -b main --depth 1 https://github.com/a1303045940/luci-app-npc.git
 #UPDATE_PACKAGE "luci-app-frpc" "kiddin9/kwrt-packages" "main" "pkg"
 #git clone -b main --depth 1 https://github.com/kiddin9/kwrt-packages/luci-app-frpc.git
 
