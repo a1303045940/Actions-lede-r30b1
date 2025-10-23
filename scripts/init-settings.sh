@@ -30,6 +30,10 @@ WIFI_FILE="./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh"
 sed -i "s/option check_signature/# option check_signature/g" package/system/opkg/Makefile
 echo src/gz openwrt_kiddin9 https://dl.openwrt.ai/latest/packages/aarch64_cortex-a53/kiddin9 >> ./package/system/opkg/files/customfeeds.conf
 
+# 修改版本为编译日期
+date_version=$(date +"%y.%m.%d")
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+sed -i "s/${orig_version}/R${date_version} by xiaomeng9597/g" package/lean/default-settings/files/zzz-default-settings
 
 # 给config下的文件增加权限
 chmod 644 files/etc/config/*
