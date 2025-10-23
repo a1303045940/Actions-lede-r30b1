@@ -33,7 +33,7 @@ echo src/gz openwrt_kiddin9 https://dl.openwrt.ai/latest/packages/aarch64_cortex
 # 修改版本为编译日期
 date_version=$(date +"%y.%m.%d")
 orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-sed -i "s/${orig_version}/R${date_version} by xiaomeng9597/g" package/lean/default-settings/files/zzz-default-settings
+sed -i "s/${orig_version}/R${date_version} by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
 
 # 给config下的文件增加权限
 chmod 644 files/etc/config/*
