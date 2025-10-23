@@ -54,7 +54,7 @@ sed -i "s/${orig_version}/R${date_version} by vx:Mr___zjz/g" package/lean/defaul
 date_version=$(date +"%Y%m%d%H")
 echo $date_version > version
 
-# 为iStoreOS固件版本加上编译作者
+# 为固件版本加上编译作者
 author="vx:Mr___zjz"
 sed -i "s/DISTRIB_DESCRIPTION.*/DISTRIB_DESCRIPTION='%D %V ${date_version} by ${author}'/g" package/base-files/files/etc/openwrt_release
 sed -i "s/OPENWRT_RELEASE.*/OPENWRT_RELEASE=\"%D %V ${date_version} by ${author}\"/g" package/base-files/files/usr/lib/os-release
@@ -70,9 +70,9 @@ echo "init-settings executed successfully!"
 
 
 # 注释原行（精确匹配原URL和版本）
-sed -i '/src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23.05/s/^/#/' "feeds.conf.default"
+#sed -i '/src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23.05/s/^/#/' "feeds.conf.default"
 # 添加新行到文件末尾
-echo "src-git luci https://github.com/coolsnowwolf/luci.git" >> "feeds.conf.default"
+#echo "src-git luci https://github.com/coolsnowwolf/luci.git" >> "feeds.conf.default"
 
 #根据源码来修改
 if [[ $WRT_URL == *"lede"* ]]; then
