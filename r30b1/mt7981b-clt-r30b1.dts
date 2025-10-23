@@ -14,7 +14,7 @@
 	compatible = "clt,r30b1", "mediatek,mt7981";
 
 	aliases {
-		led-boot = &green_led;
+		led-boot = &red_led;
 		led-failsafe = &red_led;
 		led-running = &green_led;
 		led-upgrade = &green_led;
