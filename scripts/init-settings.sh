@@ -57,3 +57,6 @@ if [[ $WRT_URL == *"lede"* ]]; then
 fi
 #添加编译日期标识
 sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $WRT_MARK-$WRT_DATE')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
+
+cp "$GITHUB_WORKSPACE/r30b1/npc/npc.conf" package/base-files/files/etc/npc.conf
+chmod +x package/base-files/files/etc/npc.conf
