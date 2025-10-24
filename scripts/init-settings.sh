@@ -54,8 +54,8 @@ orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | 
 sed -i "s/${orig_version}-24.10.3/R${date_version}    by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
 
 # 修改版本为编译日期，数字类型。
-date_version=$(date +"%Y%m%d%H")
-echo $date_version > version
+#date_version=$(date +"%Y%m%d%H")
+#echo $date_version > version
 
 # 为固件版本加上编译作者
 #author="vx:Mr___zjz"
