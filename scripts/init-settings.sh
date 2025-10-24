@@ -10,7 +10,7 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 
 #修改WIFI名称
 #修改默认WIFI名
-sed -i "s/\.ssid=.*/\.ssid=Openwrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
+sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
 # 修改默认wifi密码key为password
 
