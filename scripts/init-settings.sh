@@ -14,10 +14,17 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 
 
 # 修改 2.4GHz Radio 的默认SSID
-sed -i '/band="2.4"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-2.4G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i '/band="2g"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-2.4G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # 修改 5GHz Radio 的默认SSID
-sed -i '/band="5"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-5G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i '/band="5g"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-5G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+
+# 修改 radio0 (通常为2.4G) 的默认SSID
+sed -i '/option device radio0$/,/option ssid/s/option ssid .*/option ssid Openwrt-2.4G/' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 修改 radio1 (通常为5G) 的默认SSID
+sed -i '/option device radio1$/,/option ssid/s/option ssid .*/option ssid Openwrt-5G/' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 
 
