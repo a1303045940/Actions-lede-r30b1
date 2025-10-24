@@ -59,8 +59,6 @@ echo 'OPENWRT_RELEASE="LEDE R25.10.10"' >> /usr/lib/os-release
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
-
-uci set network.lan.ipaddr='192.168.6.1'
 uci set system.@system[0].version="by vx:Mr___zjz/OpenWrt 24.10.3"
 uci set system.@system[0].hostname="OpenWrt"
 uci set wireless.@wifi-iface[0].ssid="OpenWrt-2.4G"
