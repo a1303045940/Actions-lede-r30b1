@@ -33,7 +33,17 @@ sed -i '/option device radio1$/,/option ssid/s/option ssid .*/option ssid Openwr
 # 查找并修改mac80211.sh等相关文件中的SSID和密码设置
 find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*" | while read file; do
     sed -i \
+        -e "s/\.ssid=.*/\.ssid=Openwrt-2.4G/g" \
+        -e "s/\.encryption=.*/\.encryption=psk2/g" \
+        -e "s/\.key=.*/\.key=password/g" \
+        "$file"
+    sed -i \
         -e "s/\.ssid=.*/\.ssid=Openwrt/g" \
+        -e "s/\.encryption=.*/\.encryption=psk2/g" \
+        -e "s/\.key=.*/\.key=password/g" \
+        "$file"
+    sed -i \
+        -e "s/\.ssid=.*/\.ssid=Openwrt-5G/g" \
         -e "s/\.encryption=.*/\.encryption=psk2/g" \
         -e "s/\.key=.*/\.key=password/g" \
         "$file"
