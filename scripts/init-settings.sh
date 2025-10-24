@@ -14,16 +14,14 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 
 # 修改默认wifi密码key为password
 
-# 修改加密方式从 none 改为 psk2
-sed -i 's/set wireless\.default_radio\${devidx}\.encryption=none/set wireless.default_radio${devidx}.encryption=psk2/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-# 修改 SSID 为根据频段区分
-sed -i 's/set wireless\.default_radio\${devidx}\.ssid=Openwrt/set wireless.default_radio${devidx}.ssid=$([ "$mode_band" = "2g" ] \&\& echo "OpenWrt-2.4G" || echo "OpenWrt-5G")/' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-# 添加wifi密码
-sed -i '/set wireless\.default_radio\${devidx}\.encryption=psk2/a\\t\tset wireless.default_radio${devidx}.key=password' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-
+# 查找并修改mac80211.sh等相关文件中的SSID和密码设置
+find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*" | while read file; do
+    sed -i \
+        -e "s/\.ssid=.*/\.ssid=Openwrt/g" \
+        -e "s/\.encryption=.*/\.encryption=psk2/g" \
+        -e "s/\.key=.*/\.key=password/g" \
+        "$file"
+done
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
