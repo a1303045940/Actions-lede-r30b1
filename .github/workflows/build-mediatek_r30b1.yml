@@ -84,7 +84,6 @@ jobs:
       run: |
         cd openwrt
         ./scripts/feeds update -a
-        ./scripts/feeds update luci
         ./scripts/feeds install -a
 
     - name: 导入补丁和配置 & 执行脚本
