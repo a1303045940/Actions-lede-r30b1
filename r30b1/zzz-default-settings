@@ -59,6 +59,19 @@ echo 'OPENWRT_RELEASE="LEDE R25.10.10"' >> /usr/lib/os-release
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
+
+uci set wireless.@wifi-iface[0].ssid="OpenWrt-2.4G"
+uci set wireless.@wifi-iface[0].encryption='psk2'
+uci set wireless.@wifi-iface[0].key='password'
+# 设置 5G WiFi
+uci set wireless.@wifi-iface[1].ssid="OpenWrt-5G"
+uci set wireless.@wifi-iface[1].encryption='psk2'
+uci set wireless.@wifi-iface[1].key='password'
+# 提交 WiFi 及系统配置
+uci commit
+
+
+
 rm -rf /tmp/luci-modulecache/
 rm -f /tmp/luci-indexcache
 
