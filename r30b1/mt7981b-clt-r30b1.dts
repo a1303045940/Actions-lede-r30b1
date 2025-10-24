@@ -56,7 +56,7 @@
 
 		blue_led: led-1 {
 			label = "blue:status";
-			gpios = <&pio 13 GPIO_ACTIVE_LOW>;
+			gpios = <&pio 11 GPIO_ACTIVE_LOW>;
 		};
 
 		red_led: led-2 {
