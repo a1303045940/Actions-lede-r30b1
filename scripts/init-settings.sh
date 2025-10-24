@@ -28,30 +28,6 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 
 
 
-# 修改默认wifi密码key为password
-
-# 查找并修改mac80211.sh等相关文件中的SSID和密码设置
-find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*" | while read file; do
-    if grep -q 'radio0' "$file"; then
-        sed -i \
-            -e "s/\.ssid=.*/\.ssid=Openwrt-2.G/g" \
-            -e "s/\.encryption=.*/\.encryption=psk2/g" \
-            -e "s/\.key=.*/\.key=password2G/g" \
-            "$file"
-    fi
-    if grep -q 'radio1' "$file"; then
-        sed -i \
-            -e "s/\.ssid=.*/\.ssid=Openwrt-5G/g" \
-            -e "s/\.encryption=.*/\.encryption=psk2/g" \
-            -e "s/\.key=.*/\.key=password5G/g" \
-            "$file"
-    fi
-    # 如果 radio0 和 radio1 在同一个文件，需要更精细的区块匹配
-    # 可考虑 awk 或分块sed实现
-    # ...
-done
-
-
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
