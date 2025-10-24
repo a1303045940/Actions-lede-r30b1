@@ -27,6 +27,8 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 #sed -i '/option device radio1$/,/option ssid/s/option ssid .*/option ssid Openwrt-5G/' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 
+#修改luc显示版本改成系统版本
+sed -i "735s/<%=pcdata(ver\.luciname)%> (<%=pcdata(ver\.luciversion)%>)/openwrt-24.10.3/" package/lean/autocore/files/arm/index.htm
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
