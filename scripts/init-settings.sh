@@ -32,23 +32,25 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 
 # 查找并修改mac80211.sh等相关文件中的SSID和密码设置
 find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*" | while read file; do
-    sed -i \
-        -e "s/\.ssid=.*/\.ssid=Openwrt/g" \
-        -e "s/\.encryption=.*/\.encryption=psk2/g" \
-        -e "s/\.key=.*/\.key=password/g" \
-        "$file"
-    sed -i \
-        -e "s/\.ssid=.*/\.ssid=Openwrt-2.4G/g" \
-        -e "s/\.encryption=.*/\.encryption=psk2/g" \
-        -e "s/\.key=.*/\.key=password/g" \
-        "$file"
-
-    sed -i \
-        -e "s/\.ssid=.*/\.ssid=Openwrt-5G/g" \
-        -e "s/\.encryption=.*/\.encryption=psk2/g" \
-        -e "s/\.key=.*/\.key=password/g" \
-        "$file"
+    if grep -q 'radio0' "$file"; then
+        sed -i \
+            -e "s/\.ssid=.*/\.ssid=Openwrt-2.G/g" \
+            -e "s/\.encryption=.*/\.encryption=psk2/g" \
+            -e "s/\.key=.*/\.key=password2G/g" \
+            "$file"
+    fi
+    if grep -q 'radio1' "$file"; then
+        sed -i \
+            -e "s/\.ssid=.*/\.ssid=Openwrt-5G/g" \
+            -e "s/\.encryption=.*/\.encryption=psk2/g" \
+            -e "s/\.key=.*/\.key=password5G/g" \
+            "$file"
+    fi
+    # 如果 radio0 和 radio1 在同一个文件，需要更精细的区块匹配
+    # 可考虑 awk 或分块sed实现
+    # ...
 done
+
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
@@ -58,7 +60,7 @@ sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package
 #修改默认IP地址
 #sed -i "s/192\.168\.[0-9]*\.[0-9]*/$openWRT_IP/g" ./package/base-files/files/bin/config_generate
 #修改默认主机名
-sed -i "s/hostname='.*'/hostname='Openwrt'/g" ./package/base-files/files/bin/config_generate
+sed -i "s/hostname='.*'/hostname='OpenWrt'/g" ./package/base-files/files/bin/config_generate
 #修改默认时区
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/config_generate
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
