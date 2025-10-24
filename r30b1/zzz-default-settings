@@ -60,14 +60,21 @@ sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
 
 
+uci set network.lan.ipaddr='192.168.6.1'
+uci set system.@system[0].version="by vx:Mr___zjz/OpenWrt 24.10.3"
+uci set system.@system[0].hostname="OpenWrt"
 uci set wireless.@wifi-iface[0].ssid="OpenWrt-2.4G"
+uci set wireless.@wifi-iface[1].ssid="OpenWrt-5G"
 uci set wireless.@wifi-iface[0].encryption='psk2'
 uci set wireless.@wifi-iface[0].key='password'
-# 设置 5G WiFi
-uci set wireless.@wifi-iface[1].ssid="OpenWrt-5G"
 uci set wireless.@wifi-iface[1].encryption='psk2'
 uci set wireless.@wifi-iface[1].key='password'
-# 提交 WiFi 及系统配置
+
+root_password="password"
+if [ -n "$root_password" ]; then
+  (echo "$root_password"; sleep 1; echo "$root_password") | passwd > /dev/null
+fi
+echo "All done!"
 uci commit
 
 
