@@ -12,6 +12,15 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 #修改默认WIFI名
 sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
+
+# 修改 2.4GHz Radio 的默认SSID
+sed -i '/band="2.4"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-2.4G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# 修改 5GHz Radio 的默认SSID
+sed -i '/band="5"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-5G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+
+
 # 修改默认wifi密码key为password
 
 # 查找并修改mac80211.sh等相关文件中的SSID和密码设置
