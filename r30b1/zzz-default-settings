@@ -67,12 +67,6 @@ uci set wireless.@wifi-iface[0].encryption='psk2'
 uci set wireless.@wifi-iface[0].key='password'
 uci set wireless.@wifi-iface[1].encryption='psk2'
 uci set wireless.@wifi-iface[1].key='password'
-
-root_password="password"
-if [ -n "$root_password" ]; then
-  (echo "$root_password"; sleep 1; echo "$root_password") | passwd > /dev/null
-fi
-echo "All done!"
 uci commit
 
 
