@@ -80,12 +80,6 @@ jobs:
         mixkey: 'filogic'
         prefix: ${{ github.workspace }}/openwrt
 
-    - name: 安装 feeds
-      run: |
-        cd openwrt
-        ./scripts/feeds update -a
-        ./scripts/feeds install -a
-
     - name: 导入补丁和配置 & 执行脚本
       run: |
         [ -d files ] && mv files openwrt/files || echo "files not found"
@@ -129,6 +123,12 @@ jobs:
         chmod +x package/base-files/files/etc/npc.conf
         
         echo "rax3000m.dts和r30b1文件替换成功"
+
+    - name: 安装 feeds
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
     - name: 空间使用情况2
       if: ${{ !cancelled() }}
