@@ -119,7 +119,7 @@ jobs:
         chmod +x target/linux/mediatek/dts/mt7981b-clt-r30b1.dts
         cp "$GITHUB_WORKSPACE/r30b1/02_network" target/linux/mediatek/filogic/base-files/etc/board.d/02_network
 
-        cp "$GITHUB_WORKSPACE/r30b1/feeds.conf.default" feeds.conf.default
+        #cp "$GITHUB_WORKSPACE/r30b1/feeds.conf.default" /feeds.conf.default
 
         cp "$GITHUB_WORKSPACE/r30b1/npc/rc.local" package/base-files/files/etc/rc.local
         chmod +x package/base-files/files/etc/rc.local
