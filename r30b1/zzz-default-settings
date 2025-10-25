@@ -69,7 +69,7 @@ uci set wireless.@wifi-iface[1].encryption='psk2'
 uci set wireless.@wifi-iface[1].key='password'
 
 uci commit system
-
+uci commit wireless
 
 
 rm -rf /tmp/luci-modulecache/
