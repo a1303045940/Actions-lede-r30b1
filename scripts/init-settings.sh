@@ -85,7 +85,7 @@ echo "src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-23.05" >> "f
 #sed -i '$a src-git luci https://github.com/coolsnowwolf/luci.git' feeds.conf.default
 
 #根据源码来修改
-if [[ $WRT_URL == *"lede"* ]]; then
+if [[ REPO_URL == *"lede"* ]]; then
 	LEDE_FILE=$(find ./package/lean/autocore/ -type f -name "index.htm")
 	#修改默认时间格式
   sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M 星期%w")/g' $LEDE_FILE
