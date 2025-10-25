@@ -75,13 +75,13 @@ echo "init-settings executed successfully!"
 
 
 # 注释原行（精确匹配原URL和版本）
-sed -i -e '/src-git luci .*openwrt-23\.05/s/^/#/' -e '$a src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10' feeds.conf.default
+#sed -i -e '/src-git luci .*openwrt-23\.05/s/^/#/' -e '$a src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10' feeds.conf.default
 
-#sed -i '/src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23.05/s/^/#/' "feeds.conf.default"
+sed -i '/src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23.05/s/^/#/' "feeds.conf.default"
 # 添加新行到文件末尾
 #echo "src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10" >> "feeds.conf.default"
 
-#sed -i '$a src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10' feeds.conf.default
+sed -i '$a src-git luci https://github.com/coolsnowwolf/luci.git' feeds.conf.default
 
 #根据源码来修改
 if [[ $WRT_URL == *"lede"* ]]; then
