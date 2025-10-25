@@ -56,7 +56,7 @@ orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | 
 sed -i "s/${orig_version}-24.10.3/R${date_version}    by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
 
 # 修改版本为编译日期，数字类型。
-#date_version=$(date +"%Y%m%d%H")
+date_version=$(date +"%Y%m%d%H")
 #echo $date_version > version
 
 # 为固件版本加上编译作者
@@ -91,7 +91,7 @@ if [[ $WRT_URL == *"lede"* ]]; then
   sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M 星期%w")/g' $LEDE_FILE
 fi
 #添加编译日期标识
-sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ $WRT_MARK-$WRT_DATE')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
+sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ vx:Mr___zjz-${date_version}')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 
 cp "$GITHUB_WORKSPACE/r30b1/npc/npc.conf" package/base-files/files/etc/npc.conf
 chmod +x package/base-files/files/etc/npc.conf
