@@ -10,7 +10,7 @@ uci -q batch <<-EOF
 	add_list system.ntp.server='ntp.ntsc.ac.cn'
 	add_list system.ntp.server='time.apple.com'
 EOF
-uci commit system
+
 
 rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
 rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
@@ -67,7 +67,8 @@ uci set wireless.@wifi-iface[0].encryption='psk2'
 uci set wireless.@wifi-iface[0].key='password'
 uci set wireless.@wifi-iface[1].encryption='psk2'
 uci set wireless.@wifi-iface[1].key='password'
-uci commit
+
+uci commit system
 
 
 
