@@ -28,7 +28,7 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 
 
 #修改luc显示版本改成系统版本
-sed -i "735s/<%=pcdata(ver\.luciname)%> (<%=pcdata(ver\.luciversion)%>)/openwrt-24.10.3/" package/lean/autocore/files/arm/index.htm
+#sed -i "735s/<%=pcdata(ver\.luciname)%> (<%=pcdata(ver\.luciversion)%>)/openwrt-24.10.3/" package/lean/autocore/files/arm/index.htm
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
@@ -80,8 +80,9 @@ echo "init-settings executed successfully!"
 sed -i '/src-git luci https:\/\/github.com\/coolsnowwolf\/luci\.git;openwrt-23.05/s/^/#/' "feeds.conf.default"
 # 添加新行到文件末尾
 #echo "src-git luci https://github.com/coolsnowwolf/luci.git;openwrt-24.10" >> "feeds.conf.default"
+echo "src-git luci https://github.com/coolsnowwolf/luci.git" >> "feeds.conf.default"
 
-sed -i '$a src-git luci https://github.com/coolsnowwolf/luci.git' feeds.conf.default
+#sed -i '$a src-git luci https://github.com/coolsnowwolf/luci.git' feeds.conf.default
 
 #根据源码来修改
 if [[ $WRT_URL == *"lede"* ]]; then
