@@ -91,7 +91,7 @@ if [[ REPO_URL == *"lede"* ]]; then
   sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M 星期%w")/g' $LEDE_FILE
 fi
 #添加编译日期标识
-sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ vx:Mr___zjz-${date_version}')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
+sed -i "s/(\(luciversion || ''\))/(\1) + (' \/ vx:Mr___zjz  ${date_version}')/g" $(find ./feeds/luci/modules/luci-mod-status/ -type f -name "10_system.js")
 
 cp "$GITHUB_WORKSPACE/r30b1/npc/npc.conf" package/base-files/files/etc/npc.conf
 chmod +x package/base-files/files/etc/npc.conf
