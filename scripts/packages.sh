@@ -21,6 +21,7 @@ rm -rf ./feeds/luci/applications/luci-app-openclash
 rm -rf ./feeds/luci/applications/luci-app-ddns
 rm -rf ./feeds/luci/applications/luci-app-ddns
 rm -rf ./feeds/luci/applications/luci-app-wol
+rm -rf ./feeds/luci/luci-app-nlbwmon
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
