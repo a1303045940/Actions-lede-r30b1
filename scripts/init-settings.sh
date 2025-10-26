@@ -28,7 +28,7 @@ sed -i '/option device radio1$/,/option ssid/s/option ssid .*/option ssid Openwr
 
 
 #修改luc显示版本改成系统版本
-#sed -i "735s/<%=pcdata(ver\.luciname)%> (<%=pcdata(ver\.luciversion)%>)/openwrt-24.10.3/" package/lean/autocore/files/arm/index.htm
+sed -i "735s/<%=pcdata(ver\.luciname)%> (<%=pcdata(ver\.luciversion)%>)/openwrt-24.10.3/" package/lean/autocore/files/arm/index.htm
 
 # 最大连接数修改为65535
 sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
@@ -53,7 +53,7 @@ echo src/gz openwrt_kiddin9 https://dl.openwrt.ai/latest/packages/aarch64_cortex
 # 修改版本为编译日期
 date_version=$(date +"%y.%m.%d")
 orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-sed -i "s/${orig_version}-24.10.3/R${date_version}    by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
+#sed -i "s/${orig_version}-24.10.3/R${date_version}    by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
 
 # 修改版本为编译日期，数字类型。
 date_version=$(date +"%Y%m%d%H")
