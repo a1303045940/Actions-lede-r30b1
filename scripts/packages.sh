@@ -19,7 +19,7 @@ rm -rf ./feeds/luci/applications/luci-app-passwall
 rm -rf ./feeds/luci/applications/luci-app-passwall2
 rm -rf ./feeds/luci/applications/luci-app-openclash
 rm -rf ./feeds/luci/applications/luci-app-ddns
-rm -rf ./feeds/luci/applications/luci-app-ddns
+rm -rf ./feeds/luci/applications/luci-app-nlbwmon
 rm -rf ./feeds/luci/applications/luci-app-wol
 rm -rf ./feeds/luci/luci-app-nlbwmon
 
