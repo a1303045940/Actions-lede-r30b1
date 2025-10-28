@@ -55,18 +55,18 @@ date_version=$(date +"%y.%m.%d")
 orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
 #sed -i "s/${orig_version}-24.10.3/R${date_version}    by vx:Mr___zjz/g" package/lean/default-settings/files/zzz-default-settings
 
-	# 获取编译日期
-	date_version=$(date +"%Y年%m月%d日")
-	# 获取原始版本
-	#orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
-	# 获取 VERSION 信息
-	VERSION_NAME=$(grep "DISTRIB_ID=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
-	VERSION=$(grep "DISTRIB_RELEASE=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
-	# 生成新版本字符串
-	new_version=" ${VERSION} 编译日期：${date_version}  by 微信:Mr___zjz"
+# 获取编译日期
+date_version=$(date +"%Y年%m月%d日")
+# 获取原始版本
+#orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+# 获取 VERSION 信息
+VERSION_NAME=$(grep "DISTRIB_ID=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
+VERSION=$(grep "DISTRIB_RELEASE=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
+# 生成新版本字符串
+new_version=" ${VERSION} 编译日期：${date_version}  by 微信:Mr___zjz"
 
-	# 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
-	sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
+# 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
+sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
 
 # 修改版本为编译日期，数字类型。
 date_version=$(date +"%Y%m%d%H")
