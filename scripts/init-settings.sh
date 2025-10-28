@@ -77,9 +77,6 @@ new_version="${VERSION_NAME}  ${VERSION}   by 微信:Mr___zjz 编译日期：${d
 # 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
 sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
 
-# 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
-sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
-
 # 修改版本为编译日期，数字类型。
 date_version=$(date +"%Y%m%d%H")
 #echo $date_version > version
