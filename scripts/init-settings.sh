@@ -20,8 +20,8 @@ sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./packag
 #sed -i '/band="5g"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-5G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 
-# 定义文件路径
-FILE="./package/kernel/mac80211/files/lib/wifi/mac80211.sh"
+# 修改wifi名称脚本
+FILE2="./package/kernel/mac80211/files/lib/wifi/mac80211.sh"
 
 ：添加 get_ssid_by_devidx 函数
 sed -i '/^detect_mac80211() {/a\
@@ -34,11 +34,11 @@ sed -i '/^detect_mac80211() {/a\
 \	}' "$FILE"
 
 # 步骤 3：替换 SSID 为动态值
-sed -i 's/set wireless\.default_radio${devidx}\.ssid=LEDE/set wireless.default_radio${devidx}.ssid=${ssid}/g' "$FILE"
+sed -i 's/set wireless\.default_radio${devidx}\.ssid=LEDE/set wireless.default_radio${devidx}.ssid=${ssid}/g' "$FILE2"
 
 # 步骤 4：在 SSID 设置前添加获取代码
 sed -i '/set wireless.default_radio${devidx}.ssid=\${ssid}/i\
-\		ssid=$(get_ssid_by_devidx "$devidx")' "$FILE"
+\		ssid=$(get_ssid_by_devidx "$devidx")' "$FILE2"
 
 
 
