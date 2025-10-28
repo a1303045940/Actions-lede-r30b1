@@ -13,12 +13,6 @@ sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7
 sed -i "s/\.ssid=.*/\.ssid=OpenWrt/g" $(find ./package/kernel/mac80211/ ./package/network/config/ -type f -name "mac80211.*")
 
 
-# 修改 2.4GHz Radio 的默认SSID
-#sed -i '/band="2g"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-2.4G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
-# 修改 5GHz Radio 的默认SSID
-#sed -i '/band="5g"/,/${.*ssid=.*/s/\.ssid=.*/\.ssid=Your-OpenWrt-5G/}' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
 
 # 修改wifi名称脚本
 FILE2="./package/kernel/mac80211/files/lib/wifi/mac80211.sh"
@@ -73,12 +67,15 @@ orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | 
 # 获取编译日期
 date_version=$(date +"%Y年%m月%d日")
 # 获取原始版本
-#orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
+orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
 # 获取 VERSION 信息
 VERSION_NAME=$(grep "DISTRIB_ID=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
 VERSION=$(grep "DISTRIB_RELEASE=" package/base-files/files/usr/lib/os-release | cut -d'=' -f2)
 # 生成新版本字符串
-new_version=" ${VERSION} 编译日期：${date_version}  by 微信:Mr___zjz"
+new_version="${VERSION_NAME}  ${VERSION}   by 微信:Mr___zjz 编译日期：${date_version}"
+
+# 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
+sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
 
 # 使用 sed 替换（使用 | 作为分隔符避免斜杠冲突）
 sed -i "s|${orig_version}|${new_version}|g" package/lean/default-settings/files/zzz-default-settings
